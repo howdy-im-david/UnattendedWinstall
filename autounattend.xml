@@ -85,6 +85,31 @@
 					<Order>14</Order>
 					<Path>cmd.exe /c "&gt;&gt;"X:\diskpart.log" diskpart.exe /s "X:\diskpart.txt""</Path>
 				</RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>15</Order>
+                    <Path>reg add "HKLM\SYSTEM\Setup\LabConfig" /v "BypassTPMCheck" /t REG_DWORD /d 1 /f</Path>
+                    <Description>Add BypassTPMCheck</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>16</Order>
+                    <Path>reg add "HKLM\SYSTEM\Setup\LabConfig" /v "BypassRAMCheck" /t REG_DWORD /d 1 /f</Path>
+                    <Description>Add BypassRAMCheck</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>17</Order>
+                    <Path>reg add "HKLM\SYSTEM\Setup\LabConfig" /v "BypassSecureBootCheck" /t REG_DWORD /d 1 /f</Path>
+                    <Description>Add BypassSecureBootCheck</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>18</Order>
+                    <Path>reg add "HKLM\SYSTEM\Setup\LabConfig" /v "BypassCPUCheck" /t REG_DWORD /d 1 /f</Path>
+                    <Description>Add BypassCPUCheck</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>19</Order>
+                    <Path>reg add "HKLM\SYSTEM\Setup\LabConfig" /v "BypassStorageCheck" /t REG_DWORD /d 1 /f</Path>
+                    <Description>Add BypassStorageCheck</Description>
+                </RunSynchronousCommand>
 			</RunSynchronous>
 		</component>
 	</settings>
@@ -150,7 +175,7 @@
 			</RunSynchronous>
 		</component>
 		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-			<ComputerName>steambox</ComputerName>
+			<ComputerName>computername</ComputerName>
 			<TimeZone>Central Standard Time</TimeZone>
 		</component>
 	</settings>
@@ -167,21 +192,21 @@
 			<UserAccounts>
 				<LocalAccounts>
 					<LocalAccount wcm:action="add">
-<Name>username</Name>
+<Name>user</Name>
 <Group>Administrators</Group>
 <Password>
-	<Value>password</Value>
+	<Value>user_password</Value>
 	<PlainText>true</PlainText>
 </Password>
 					</LocalAccount>
 				</LocalAccounts>
 			</UserAccounts>
 			<AutoLogon>
-				<Username>username</Username>
+				<Username>user</Username>
 				<Enabled>true</Enabled>
 				<LogonCount>1</LogonCount>
 				<Password>
-					<Value>password</Value>
+					<Value>user_password</Value>
 					<PlainText>true</PlainText>
 				</Password>
 			</AutoLogon>
@@ -232,7 +257,7 @@ Get-AppxProvisionedPackage -Online |
 Where-Object -Property 'DisplayName' -In -Value @(
   'Microsoft.Microsoft3DViewer';
   'Microsoft.BingSearch';
-  <!-- 'Microsoft.WindowsCalculator'; -->
+  	<!-- 'Microsoft.WindowsCalculator'; -->
   'Microsoft.WindowsCamera';
   'Clipchamp.Clipchamp';
   'Microsoft.WindowsAlarms';
@@ -250,9 +275,9 @@ Where-Object -Property 'DisplayName' -In -Value @(
   'Microsoft.Office.OneNote';
   'Microsoft.OutlookForWindows';
   'Microsoft.Paint';
-  <!-- 'Microsoft.MSPaint'; -->
+  	<!-- 'Microsoft.MSPaint'; -->
   'Microsoft.People';
-  <!-- 'Microsoft.Windows.Photos'; -->
+  	<!-- 'Microsoft.Windows.Photos'; -->
   'Microsoft.PowerAutomateDesktop';
   'MicrosoftCorporationII.QuickAssist';
   'Microsoft.SkypeApp';
@@ -266,27 +291,27 @@ Where-Object -Property 'DisplayName' -In -Value @(
   'Microsoft.BingWeather';
   'Microsoft.ZuneMusic';
   'Microsoft.WindowsTerminal';
-  <!-- 'Microsoft.Xbox.TCUI'; -->
-			<!-- 'Microsoft.XboxApp'; -->
-			<!-- 'Microsoft.XboxGameOverlay'; -->
-			<!-- 'Microsoft.XboxGamingOverlay'; -->
-			<!-- 'Microsoft.XboxIdentityProvider'; -->
-			<!-- 'Microsoft.XboxSpeechToTextOverlay'; -->
-			<!-- 'Microsoft.GamingApp'; -->
+  	<!-- 'Microsoft.Xbox.TCUI'; -->
+	<!-- 'Microsoft.XboxApp'; -->
+	<!-- 'Microsoft.XboxGameOverlay'; -->
+	<!-- 'Microsoft.XboxGamingOverlay'; -->
+	<!-- 'Microsoft.XboxIdentityProvider'; -->
+	<!-- 'Microsoft.XboxSpeechToTextOverlay'; -->
+	<!-- 'Microsoft.GamingApp'; -->
   'Microsoft.YourPhone';
-  <!-- 'Microsoft.MicrosoftEdge'; -->
-			<!-- 'Microsoft.MicrosoftEdge.Stable'; -->
-			<!-- 'Microsoft.MicrosoftEdge_8wekyb3d8bbwe'; -->
-			<!-- 'Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe'; -->
-			<!-- 'Microsoft.MicrosoftEdgeDevToolsClient_1000.19041.1023.0_neutral_neutral_8wekyb3d8bbwe'; -->
-			<!-- 'Microsoft.MicrosoftEdge_44.19041.1266.0_neutral__8wekyb3d8bbwe'; -->
-			<!-- 'Microsoft.OneDrive'; -->
-			<!-- 'Microsoft.MicrosoftEdgeDevToolsClient'; -->
+  	<!-- 'Microsoft.MicrosoftEdge'; -->
+	<!-- 'Microsoft.MicrosoftEdge.Stable'; -->
+	<!-- 'Microsoft.MicrosoftEdge_8wekyb3d8bbwe'; -->
+	<!-- 'Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe'; -->
+	<!-- 'Microsoft.MicrosoftEdgeDevToolsClient_1000.19041.1023.0_neutral_neutral_8wekyb3d8bbwe'; -->
+	<!-- 'Microsoft.MicrosoftEdge_44.19041.1266.0_neutral__8wekyb3d8bbwe'; -->
+	<!-- 'Microsoft.OneDrive'; -->
+	<!-- 'Microsoft.MicrosoftEdgeDevToolsClient'; -->
   'Microsoft.549981C3F5F10';
   'Microsoft.MixedReality.Portal';
   'Microsoft.Windows.Ai.Copilot.Provider';
   'Microsoft.WindowsMeetNow';
-  <!-- 'Microsoft.WindowsStore'; -->
+  	<!-- 'Microsoft.WindowsStore'; -->
 ) | Remove-AppxProvisionedPackage -AllUsers -Online *&gt;&amp;1 &gt;&gt; "$env:TEMP\remove-packages.log";
 		</File>
 
